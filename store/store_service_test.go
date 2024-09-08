@@ -21,13 +21,13 @@ func TestStoreInit(t *testing.T) {
 func TestInsertionAndRetrieval(t *testing.T) {
 	initialLink := "https://github.com/krishangordhan/go-url-shortener"
 	userUUID := "e0dba740-fc4b-4977-872c-d360239e6b1a"
-	shortUrl := "Jsz4k57oAX"
+	shortURL := "Jsz4k57oAX"
 
-	store.SaveURLMapping(shortUrl, initialLink, userUUID)
+	store.SaveURLMapping(shortURL, initialLink, userUUID)
 
-	retrievedUrl := store.RetrieveURL(shortUrl)
+	retrievedURL := store.RetrieveURL(shortURL)
 
-	if retrievedUrl != initialLink {
-		t.Errorf("RetrieveUrl() should return the original url; want: %s, got: %s", initialLink, retrievedUrl)
+	if retrievedURL != initialLink {
+		t.Errorf("RetrieveUrl() should return the original url; want: %s, got: %s", initialLink, retrievedURL)
 	}
 }

@@ -37,17 +37,17 @@ func InitializeStore() *StorageService {
 	return storeService
 }
 
-func SaveURLMapping(shortUrl string, originalUrl string, userId string) {
-	err := storeService.RedisClient.Set(shortUrl, originalUrl, CacheDuration).Err()
+func SaveURLMapping(shortURL string, originalURL string, userID string) {
+	err := storeService.RedisClient.Set(shortURL, originalURL, CacheDuration).Err()
 	if err != nil {
-		panic(fmt.Sprintf("Failed saving key url | Error: %v - shortUrl: %s - originalUrl: %s\n", err, shortUrl, originalUrl))
+		panic(fmt.Sprintf("Failed saving key url | Error: %v - shortUrl: %s - originalUrl: %s\n", err, shortURL, originalURL))
 	}
 }
 
-func RetrieveURL(shortUrl string) string {
-	result, err := storeService.RedisClient.Get(shortUrl).Result()
+func RetrieveURL(shortURL string) string {
+	result, err := storeService.RedisClient.Get(shortURL).Result()
 	if err != nil {
-		panic(fmt.Sprintf("Failed retrieving url | Error: %v - shortUrl: %s\n", err, shortUrl))
+		panic(fmt.Sprintf("Failed retrieving url | Error: %v - shortUrl: %s\n", err, shortURL))
 	}
 	return result
 }
